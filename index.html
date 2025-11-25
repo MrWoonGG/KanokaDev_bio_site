@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Woon — kanokadev.top</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container" id="main-container">
+    <div class="section">
+      <div class="type">woon@kanokadev:~$ whoami</div>
+      <h1>Welcome. I'm Woon – just a cool guy 🖤</h1>
+      <p>Python (aiogram/disnake/flask/fastapi), Godot (GDScript), Web (HTML,CSS,JS)</p>
+      <p>Arch Linux, anime, memes – it's my vibe 👉👈</p>
+    </div>
+
+    <div class="section">
+      <h2 style="color: var(--primary)">📁 My projects</h2>
+      <div class="projects">
+
+        <div class="project">
+          <h3>📱 VibeBot</h3>
+          <p>VibeBot — Telegram bot like “Daivnichik”, but with upgraded search, filters and geolocation profiles.</p>
+          <button onclick="window.open('https://t.me/VibeBot', '_blank')">Open link</button>
+        </div>
+
+        <div class="project">
+          <h3>🐉 Arinara</h3>
+          <p>Arinara — Discord bot with categories, AI functions, commands and web control panel.</p>
+          <button onclick="window.open('https://github.com/MrWoonGG/Arinara', '_blank')">Open link</button>
+        </div>
+
+        <div class="project">
+          <h3>🇺🇦 UA ShahedEater</h3>
+          <p>Simple 2D game about shooting shaheds in meme style. Features multiplayer & 3 difficulty modes.</p>
+          <button onclick="window.open('https://kanokadev.top/shahedeater', '_blank')">Open link</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 style="color: var(--primary)">📬 Contacts</h2>
+      <div class="contacts">
+        <a href="https://t.me/xeonisgood" target="_blank" class="contact-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+          Telegram
+        </a>
+        <a href="https://github.com/MrWoonGG" target="_blank" class="contact-item">
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.72.5.5 5.72.5 12c0 5.08 3.29 9.4 7.84 10.94.57.11.78-.25.78-.56v-1.98c-3.19.7-3.86-1.54-3.86-1.54-.52-1.3-1.26-1.64-1.26-1.64-1.03-.71.08-.7.08-.7 1.14.08 1.74 1.18 1.74 1.18 1.01 1.73 2.66 1.23 3.31.94.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.64 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.13 1.18a10.86 10.86 0 012.85-.38c.97 0 1.95.13 2.85.38 2.16-1.5 3.12-1.18 3.12-1.18.63 1.59.24 2.77.12 3.06.74.8 1.18 1.82 1.18 3.07 0 4.38-2.69 5.34-5.25 5.63.42.36.77 1.07.77 2.17v3.21c0 .32.21.69.79.57A10.52 10.52 0 0023.5 12c0-6.28-5.22-11.5-11.5-11.5z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:dev@kanokadev.top" class="contact-item">
+          <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v1.5l-10 6.5L2 7.5V6c0-1.1.9-2 2-2zm0 4.25l7.72 5.02c.16.11.37.11.53 0L20 8.25V18c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V8.25z"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+
+    <footer>© 2025 Woon / kanokadev.top</footer>
+  </div>
+
+  <script>
+      let lowPerformance = false;
+      let lastFrame = performance.now();
+      let frameCount = 0;
+      let fps = 60;
+
+      function checkFPS() {
+          const now = performance.now();
+          frameCount++;
+          if(now - lastFrame >= 1000) {
+              fps = frameCount;
+              frameCount = 0;
+              lastFrame = now;
+              lowPerformance = fps < 30;
+              console.log('FPS:', fps, 'LowPerformance:', lowPerformance);
+          }
+          requestAnimationFrame(checkFPS);
+      }
+      checkFPS();
+
+      document.querySelector('.type')?.addEventListener('animationend', e => {
+          if(e.animationName === 'typing') e.target.classList.remove('type');
+      });
+
+      document.addEventListener("mousemove", e => {
+          if (lowPerformance) return;
+          const layer = document.getElementById("main-container");
+          const x = (e.clientX - window.innerWidth / 2) / 40;
+          const y = (e.clientY - window.innerHeight / 2) / 40;
+          layer.style.transform = `translate(${x}px, ${y}px)`;
+      });
+  </script>
+
+</body>
+</html>
